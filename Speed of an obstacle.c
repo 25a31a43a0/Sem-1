@@ -1,4 +1,3 @@
-/*C-program to find the speed of an obstacle*/
 #include<stdio.h>
 #include<math.h>
 int main(){
