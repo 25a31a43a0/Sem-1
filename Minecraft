@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <conio.h>
+
+#define SIZE 10
+
+int x = 5, y = 5;
+char world[SIZE][SIZE];
+
+
+void init() {
+    for(int i = 0; i < SIZE; i++) {
+        for(int j = 0; j < SIZE; j++) {
+            world[i][j] = '.';
+        }
+    }
+}
+
+
+void draw() {
+
+    for(int i = 0; i < SIZE; i++) {
+        for(int j = 0; j < SIZE; j++) {
+            if(i == y && j == x)
+                printf("P ");
+            else
+                printf("%c ", world[i][j]);
+        }
+        printf("\n");
+    }
+    printf("WASD = move | B = place block | Q = quit\n");
+}
+
+int main() {
+    char ch;
+    init();
+
+    while(1) {
+        draw();
+        ch = getch();
+
+        if(ch == 'q') break;
+
+
+        if(ch == 'w' && y > 0) y--;
+        if(ch == 's' && y < SIZE-1) y++;
+        if(ch == 'a' && x > 0) x--;
+        if(ch == 'd' && x < SIZE-1) x++;
+
+
+        if(ch == 'b') {
+            world[y][x] = '#';
+        }
+    }
+
+    return 0;
+}
